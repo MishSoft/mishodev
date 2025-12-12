@@ -5,3 +5,23 @@ body {
   background-color: #101621;
 }
 
+
+
+
+/* Hide default scrollbar in Webkit browsers */
+.sccr::-webkit-scrollbar {
+  height: 8px; /* horizontal scrollbar height */
+}
+
+.sccr::-webkit-scrollbar-track {
+  background: rgba(45, 45, 45, 0.2);
+  border-radius: 4px;
+}
+
+.sccr::-webkit-scrollbar-thumb {
+  background-color: rgba(83, 14, 209, 0.6);
+  border-radius: 4px;
+}
+
+
+
