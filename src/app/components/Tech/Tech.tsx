@@ -29,7 +29,7 @@ const iconComponents: { [key: string]: React.ComponentType } = {
 
 export default function Tech() {
   return (
-    <div className="px-10 py-16 flex flex-col w-full min-h-screen justify-center items-center">
+    <div id='skills' className="px-10 py-16 flex flex-col w-full min-h-screen justify-center items-center">
       <h1 className="text-center text-4xl mb-12 text-gray-200 font-bold tracking-wide">
         Tech Stack & Tools
       </h1>

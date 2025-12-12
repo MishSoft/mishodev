@@ -20,15 +20,15 @@ export default function TextSide() {
       <div className="flex flex-col gap-4 w-full">
 
         {/* Email card */}
-        <div className="flex items-center gap-4 bg-gray-800/70 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
-          <div className="p-2 bg-blue-500 rounded-full text-white text-lg flex items-center justify-center">
+        <div className="flex backdrop-blur-xs items-center gap-4 bg-gray-800/20 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+          <div className="p-2  bg-blue-500 rounded-full text-white text-lg flex items-center justify-center">
             <MdEmail />
           </div>
           <h2 className="text-sm font-medium text-gray-100">mishiko.business@gmail.com</h2>
         </div>
 
         {/* Location card */}
-        <div className="flex items-center gap-4 bg-gray-800/70 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
+        <div className="flex items-center backdrop-blur-xs gap-4 bg-gray-800/20 p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
           <div className="p-2 bg-blue-500 rounded-full text-white text-lg flex items-center justify-center">
             <FaLocationDot />
           </div>

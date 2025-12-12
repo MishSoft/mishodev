@@ -4,12 +4,12 @@ import WorkItem from './WorkItem';
 
 export default function Work() {
   return (
-    <div className="px-10 py-10 bg-gray-900/20 backdrop-blur-2xl relative">
+    <div id='work' className="px-2 flex flex-col items-start justify-center w-full  md:px-10 min-h-screen py-10 bg-gray-900/20 backdrop-blur-2xl relative">
 
       <WorkText />
 
       {/* Scroll container with gradient overlay */}
-      <div className="relative">
+      <div className="relative w-full">
         <div className="sccr flex items-center overflow-x-auto gap-6 scroll-smooth scrollbar-thin scrollbar-thumb-pink-500/60 scrollbar-track-gray-700/20">
           <WorkItem />
           <WorkItem />

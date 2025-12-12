@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FormContact() {
   return (
-    <form className="w-full md:w-200 bg-gray-900/80 p-8 rounded-xl shadow-lg shadow-black/30 flex flex-col gap-6">
+    <form className="w-full md:w-200 bg-gray-900/20 backdrop-blur-xs p-8 rounded-xl shadow-lg shadow-black/30 flex flex-col gap-6">
       <div className="flex flex-col">
         <label className="mb-2 text-gray-300 font-medium">Name</label>
         <input
@@ -40,8 +40,4 @@ export default function FormContact() {
   )
 }
 
-/*
-  
 
-
-*/

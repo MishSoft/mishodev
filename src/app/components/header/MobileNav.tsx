@@ -50,7 +50,7 @@ export default function MobileNav() {
       {
         links.map(link => {
           return (
-            <Link className='text-center py-2  hover:text-gray-200 duration-200 ' key={link.id} href={link.path}>
+            <Link onClick={() => setIsShowMenu(false)} className='text-center py-2  hover:text-gray-200 duration-200 ' key={link.id} href={link.path}>
               {link.title}
             </Link>
           )
