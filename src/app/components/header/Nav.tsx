@@ -29,7 +29,7 @@ const links = [
 
 export default function Nav() {
   return (
-    <nav className='hidden md:flex z-50 items-center text-white gap-5 font-semibold'>
+    <nav className='hidden md:flex z-50  items-center text-white gap-5 font-semibold'>
       {
         links.map(link => {
           return (
