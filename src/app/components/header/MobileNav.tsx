@@ -1,5 +1,5 @@
 "use client"
-import { useGlobalContext } from '@/app/context/GlobalContext'
+import { useGlobalContext } from '@/context/GlobalContext'
 import Link from 'next/link'
 import React, { FormEvent, useEffect, useRef } from 'react'
 

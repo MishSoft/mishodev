@@ -1,28 +1,41 @@
 import React from 'react';
-import WorkText from './WorkText';
+import sql from '@/lib/db';
 import WorkItem from './WorkItem';
 
-export default function Work() {
+// 1. ჯერ აღვწეროთ Project ინტერფეისი ზუსტად
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  image_url: string;
+  is_visible: boolean;
+  project_link?: string;
+  github_link?: string;
+}
+
+export default async function Work() {
+  // 2. მონაცემების წამოღება
+  const projects = await sql`
+    SELECT id, title, description, image_url, is_visible
+    FROM projects
+    WHERE is_visible = true
+    ORDER BY created_at DESC
+  `;
+
   return (
-    <div id='work' className="px-2 flex flex-col items-start justify-center w-full  md:px-10 min-h-screen py-10 bg-gray-900/20 backdrop-blur-2xl relative">
-
-      <WorkText />
-
-      {/* Scroll container with gradient overlay */}
+    <div id='work' className="px-2 flex flex-col items-start justify-center w-full md:px-10 min-h-screen py-10 bg-gray-900/20 backdrop-blur-2xl relative">
       <div className="relative w-full">
-        <div className="sccr flex items-center overflow-x-auto gap-6 scroll-smooth scrollbar-thin scrollbar-thumb-pink-500/60 scrollbar-track-gray-700/20">
-          <WorkItem />
-          <WorkItem />
-          <WorkItem />
-          <WorkItem />
-          <WorkItem />
+        <div className="sccr flex items-center overflow-x-auto gap-6 scroll-smooth py-10">
+
+          {/* 3. აი აქ არის გამოსავალი: (project as unknown as Project) */}
+          {projects.map((project) => (
+            <WorkItem
+              key={(project as any).id}
+              project={project as unknown as Project}
+            />
+          ))}
+
         </div>
-
-        {/* Left gradient */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-16 bg-linear-to-r from-gray-900/80 to-transparent"></div>
-
-        {/* Right gradient */}
-        <div className="pointer-events-none absolute right-0 top-0 h-full w-16 bg-linear-to-l from-gray-900/80 to-transparent"></div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import {X, Menu} from 'lucide-react'
-import { useGlobalContext } from '@/app/context/GlobalContext'
+import { useGlobalContext } from '@/context/GlobalContext'
 
 export default function NavBarMenuBtn() {
   const {isShowMenu, toggleMenu} = useGlobalContext()
