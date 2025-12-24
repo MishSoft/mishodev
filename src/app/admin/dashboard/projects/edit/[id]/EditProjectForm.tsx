@@ -138,7 +138,7 @@ export default function EditProjectForm({ project }: { project: any }) {
 
         <button
           type="submit"
-          className="w-full py-5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-black rounded-2xl flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95"
+          className="w-full py-5 bg-linear-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-black rounded-2xl flex items-center justify-center gap-3 shadow-xl transition-all active:scale-95"
         >
           <Save size={20} /> შენახვა
         </button>
