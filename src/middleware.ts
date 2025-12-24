@@ -20,8 +20,8 @@ export async function middleware(request: NextRequest) {
 
     // თუ სხვა ადმინ გვერდზეა და არ აქვს სესია, გავაგდოთ ლოგინზე
     if (!session) {
-      return NextResponse.redirect(new URL('/admin/login', request.url))
-    }
+  return NextResponse.redirect(new URL('/admin/login?error=session_expired', request.url))
+}
   }
 
   return NextResponse.next()

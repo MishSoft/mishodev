@@ -11,11 +11,13 @@ export async function loginAdmin(formData: FormData) {
   const correctPassword = process.env.ADMIN_PASSWORD
 
   if (email === correctEmail && password === correctPassword) {
+    // ქუქის შექმნა 1 საათიანი ვადით
     (await cookies()).set('admin_session', 'true', {
-      httpOnly: true, // უსაფრთხოებისთვის, რომ JS-ით ვერ წაიკითხონ
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 24, // 1 დღე
+      maxAge: 60 * 60, // 3600 წამი = 1 საათი
       path: '/',
+      sameSite: 'lax' // უსაფრთხოების დამატებითი ფენა
     })
 
     redirect('/admin/dashboard')
