@@ -11,9 +11,6 @@ export async function loginAdmin(formData: FormData) {
   const correctPassword = process.env.ADMIN_PASSWORD
 
   if (email === correctEmail && password === correctPassword) {
-    // თუ მონაცემები სწორია, ვქმნით სესიის ქუქის (Cookie)
-    // რეალურ პროექტში აქ დაშიფრული JWT უნდა იყოს,
-    // მაგრამ მარტივი პორტფოლიოსთვის ესეც იმუშავებს:
     (await cookies()).set('admin_session', 'true', {
       httpOnly: true, // უსაფრთხოებისთვის, რომ JS-ით ვერ წაიკითხონ
       secure: process.env.NODE_ENV === 'production',
