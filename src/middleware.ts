@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith('/admin')) {
 
     // თუ ლოგინის გვერდზეა, გავატაროთ
-    if (pathname === '/admin/dashboard/login') {
+    if (pathname === '/admin/login') {
       // მაგრამ თუ უკვე დალოგინებულია, გადავიყვანოთ დეშბორდზე
       if (session) {
         return NextResponse.redirect(new URL('/admin/dashboard/', request.url))
@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
 
     // თუ სხვა ადმინ გვერდზეა და არ აქვს სესია, გავაგდოთ ლოგინზე
     if (!session) {
-      return NextResponse.redirect(new URL('/admin/dashboard/login', request.url))
+      return NextResponse.redirect(new URL('/admin/login', request.url))
     }
   }
 
