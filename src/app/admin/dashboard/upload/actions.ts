@@ -5,32 +5,52 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 export async function createProject(formData: FormData) {
+  // 1. მარტივი ველების წამოღება
   const title = formData.get('title') as string;
-  const description = formData.get('description') as string;
+  const long_description = formData.get('long_description') as string;
   const project_link = formData.get('project_link') as string;
   const github_link = formData.get('github_link') as string;
-  const techString = formData.get('technologies') as string;
 
-  const technologies = techString
-    ? techString.split(',').map(t => t.trim())
-    : [];
+  // 2. მასივების წამოღება (getAll აუცილებელია მრავალჯერადი მნიშვნელობებისთვის)
+  const images = formData.getAll('images') as string[];
+  const tools = formData.getAll('tools') as string[];
 
-  // დროებითი სურათი, სანამ Upload სერვისს დაამატებ
-  const image_url = "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop";
-
-  try {
-    await sql`
-      INSERT INTO projects (title, description, project_link, github_link, technologies, image_url)
-      VALUES (${title}, ${description}, ${project_link}, ${github_link}, ${technologies}, ${image_url})
-    `;
-
-    revalidatePath('/');
-    revalidatePath('/admin/projects');
-  } catch (error) {
-    console.error("Database Error:", error);
-    return { error: "მონაცემების შენახვა ვერ მოხერხდა ბაზაში." };
+  // ვალიდაცია: შევამოწმოთ მინიმუმ სათაური თუ გვაქვს
+  if (!title || title.length < 3) {
+    return { error: "პროექტის სათაური აუცილებელია (მინ. 3 სიმბოლო)." };
   }
 
-  // Redirect ყოველთვის try-catch-ის გარეთ
+  try {
+    // 3. ბაზაში ჩაწერა.
+    // დარწმუნდი, რომ ბაზაში სვეტების სახელები ემთხვევა: title, long_description, project_link, github_link, images, tools
+    await sql`
+      INSERT INTO projects (
+        title,
+        long_description,
+        project_link,
+        github_link,
+        images,
+        tools
+      )
+      VALUES (
+        ${title},
+        ${long_description},
+        ${project_link},
+        ${github_link},
+        ${images},
+        ${tools}
+      )
+    `;
+
+    // ქეშის გასუფთავება, რომ ცვლილებები მაშინვე გამოჩნდეს
+    revalidatePath('/');
+    revalidatePath('/admin/dashboard/projects');
+
+  } catch (error) {
+    console.error("Database Error:", error);
+    return { error: "მონაცემების შენახვა ვერ მოხერხდა ბაზაში. შეამოწმეთ SQL სვეტები." };
+  }
+
+  // გადამისამართება ხდება მხოლოდ წარმატების შემთხვევაში
   redirect('/admin/dashboard/projects');
 }
