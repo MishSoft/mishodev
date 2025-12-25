@@ -11,7 +11,7 @@ export default function ProjectCarousel({ images }: { images: string[] }) {
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative group w-full aspect-video md:aspect-[16/9] rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+    <div className="relative group w-full aspect-video md:aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
       {/* მთავარი სურათი */}
       <img
         src={images[currentIndex]}

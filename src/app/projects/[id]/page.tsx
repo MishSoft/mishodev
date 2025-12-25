@@ -40,7 +40,7 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
             alt={project.title}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#050505] via-[#050505]/60 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto w-full px-6 md:px-20 pb-16">
           <div className="flex flex-wrap gap-3 mb-6">
@@ -72,7 +72,7 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
 
           <section className="space-y-6">
             <h2 className="text-2xl font-bold text-gray-100 flex items-center gap-3">
-              <Layout className="text-pink-500" size={24} /> პროექტის შესახებ
+              <Layout className="text-pink-500" size={24} /> About the Project
             </h2>
             <div className="text-gray-400 leading-[1.8] text-lg md:text-xl font-light whitespace-pre-wrap">
               {project.long_description}
@@ -96,7 +96,7 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
               </div>
             </div>
 
-            <h3 className="text-xl font-bold mb-6 italic underline decoration-pink-500 underline-offset-8">ბმულები</h3>
+            <h3 className="text-xl font-bold mb-6 italic underline decoration-pink-500 underline-offset-8">Links</h3>
 
             <div className="space-y-4">
               {project.project_link && (
