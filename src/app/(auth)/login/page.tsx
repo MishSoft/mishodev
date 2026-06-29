@@ -12,10 +12,20 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
-    const result = await loginAdmin(formData);
+    try {
+      const result = await loginAdmin(formData);
 
-    if (result?.error) {
-      setError(result.error);
+      if (result?.error) {
+        setError(result.error);
+      }
+    } catch (e: any) {
+      // redirect() ისვრის NEXT_REDIRECT exception-ს — ეს ნორმალურია
+      // Next.js-ის redirect-ი ამ გზით მუშაობს, ამიტომ ვერ ვიჭერთ
+      if (e?.digest?.startsWith('NEXT_REDIRECT')) {
+        return; // redirect მიმდინარეობს, loading-ის reset არ სჭირდება
+      }
+      setError('მოხდა შეცდომა. სცადეთ თავიდან.');
+    } finally {
       setLoading(false);
     }
   }
@@ -82,3 +92,4 @@ export default function LoginPage() {
     </div>
   )
 }
+

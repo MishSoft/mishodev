@@ -5,6 +5,6 @@ import { redirect } from 'next/navigation'
 
 export async function logout() {
   const cookieStore = await cookies()
-  cookieStore.delete('admin_session') // შენი Middleware სწორედ ამ სახელს ეძებს
-  redirect('/admin/login')
+  cookieStore.delete('admin_session')
+  redirect('/login')
 }
